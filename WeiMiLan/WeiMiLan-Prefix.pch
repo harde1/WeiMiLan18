@@ -1,0 +1,73 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+
+    #import <Foundation/Foundation.h>
+
+#endif
+
+#define kIsIOS7 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+#define wImage(str) [UIImage imageNamed:(str)]
+#define kUI_SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+#define kUI_SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
+#define kImgName(name, type) [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:name ofType:type]]
+#define kTingColor [UIColor colorWithRed:142/225.0 green:28/255.0 blue:130/255.0 alpha:1]
+#import "AsyncUdpSocket.h"
+#import "TRAppDelegate.h"
+
+#import "MMProgressHUD.h"
+#import "MMProgressHUDOverlayView.h"
+#import "NSString+unicodeShow.h"
+#import "UdpManager.h"
+
+#define ApplicationDelegate ((TRAppDelegate *)[UIApplication sharedApplication].delegate)
+#define NSStandardUserDefaults [NSUserDefaults standardUserDefaults]
+
+#import "LFCGzipUtility.h"
+#import "UIView+ViewFrameGeometry.h"
+#import "AFNetworking.h"
+#import "UIImageView+AFNetworking.h"
+#import "OLImage.h"
+#import "OLImageView.h"
+#import "WeChatNavigationBar.h"
+#import "SVProgressHUD.h"
+#import "UIImage+Util.h"
+//失败的PUD
+#define MMProgressHUDShowError(string);\
+[MMProgressHUD showWithTitle:@"" status:string];\
+[MMProgressHUD dismissWithError:string afterDelay:1.];
+//成功的PUD
+#define MMProgressHUDShowSuccess(string);\
+[MMProgressHUD showWithTitle:@"" status:string];\
+[MMProgressHUD dismissWithSuccess:string title:@"" afterDelay:1.];
+
+//pud
+#define MMProgressHUDShowWithStatus(string);\
+[MMProgressHUD showWithStatus:string];\
+double delayInSeconds = 2.5;\
+dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);\
+dispatch_after(popTime, dispatch_get_main_queue(), ^(void){[MMProgressHUD dismissWithError:@"失败!"];});
+//[MMProgressHUD showWithStatus:@"相片保存中…"];
+//    double delayInSeconds = 2.5;
+//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//        [MMProgressHUD dismissWithError:@"登录失败!"];
+//    });
+
+/**
+ *  友盟统计
+ */
+#import"MobClick.h"
+#import"MobClickSocialAnalytics.h"
+#define UMENG_APPKEY @"53db36f1fd98c5ff8c0047d5"

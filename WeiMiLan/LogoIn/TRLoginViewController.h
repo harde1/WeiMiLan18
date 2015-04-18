@@ -1,0 +1,22 @@
+//
+//  TRLoginViewController.h
+//  WeiMiLan
+//
+//  Created by Mac on 14-7-17.
+//  Copyright (c) 2014年 Mac. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+
+@interface TRLoginViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UITextField *userNameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
+
+@property (strong, nonatomic) IBOutlet UIButton *loginButton;
+@property (strong,nonatomic)WeChatNavigationBar *weChatNavigationBar;
+- (IBAction)loginAction:(UIButton *)sender;
+
+- (IBAction)helpAction:(UIButton *)sender;
+
+@end

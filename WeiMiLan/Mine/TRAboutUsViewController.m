@@ -1,0 +1,64 @@
+//
+//  TRAboutUsViewController.m
+//  WeiMiLan
+//
+//  Created by Mac on 14-7-20.
+//  Copyright (c) 2014年 Mac. All rights reserved.
+//
+
+#import "TRAboutUsViewController.h"
+
+@interface TRAboutUsViewController ()
+
+@end
+
+@implementation TRAboutUsViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    [self initNavigation];
+    NSURL *url=[NSURL URLWithString:@"http://www.op89.com/gy.html"];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+    
+    self.webView.top=self.weChatNavigationBar.bottom;
+}
+
+- (void)initNavigation
+{
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    self.weChatNavigationBar=[[WeChatNavigationBar alloc] init];
+    [self.view addSubview:self.weChatNavigationBar];
+    self.weChatNavigationBar.titleLabel.text=@"关于我们";
+      [self.weChatNavigationBar.rightButton setImage:nil forState:0];
+    [self.weChatNavigationBar .leftButton addTarget:self action:@selector(exit)  forControlEvents:UIControlEventTouchUpInside];
+    
+    
+}
+-(void)exit
+{
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

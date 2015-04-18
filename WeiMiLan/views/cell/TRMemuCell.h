@@ -1,0 +1,17 @@
+//
+//  TRMemuCell.h
+//  WeiMiLan
+//
+//  Created by Mac on 14-7-17.
+//  Copyright (c) 2014年 Mac. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface TRMemuCell : UICollectionViewCell
+
+@property (strong, nonatomic) IBOutlet OLImageView *imageView;
+
+@property (strong, nonatomic) IBOutlet UIImageView *selectImageView;
+@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+@end
